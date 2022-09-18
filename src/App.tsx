@@ -13,6 +13,7 @@ function App() {
     <div className="App">
       <Router>
         <div>
+          {/* All this Navbar component does is provide links that the Routes component can match & serve */}
           <Navbar />
           {/* A <Routes> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
