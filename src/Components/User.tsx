@@ -6,39 +6,39 @@ interface UserProps {
 }
 
 const User: FC<UserProps> = ({ variant }) => {
-  const { user, isAuthenticated, isLoading } = useAuth0();
+    const { user, isAuthenticated, isLoading } = useAuth0();
 
-  if (isLoading)
-    return (
-      <>
+    if (isLoading)
+        return (
+            <>
         (<p>Loading...</p>)
-      </>
-    );
-  if (isAuthenticated) {
-    switch (variant) {
-      case "chip":
-        return (
-          <>
-            <p>This is a CHIP placeholder</p>
-          </>
+            </>
         );
-      case "text":
-        return (
-          <>
-            <p>This is a TEXT placeholder</p>
-          </>
-        );
-      default:
-        return (
-          { isAuthenticated } && (
-            <div>
-              <p>Welcome Back, {user?.nickname}</p>
-            </div>
-          )
-        );
+    if (isAuthenticated) {
+        switch (variant) {
+        case "chip":
+            return (
+                <>
+                    <p>This is a CHIP placeholder</p>
+                </>
+            );
+        case "text":
+            return (
+                <>
+                    <p>This is a TEXT placeholder</p>
+                </>
+            );
+        default:
+            return (
+                { isAuthenticated } && (
+                    <div>
+                        <p>Welcome Back, {user?.nickname}</p>
+                    </div>
+                )
+            );
+        }
     }
-  }
-  return <>{""}</>;
+    return <>{""}</>;
 };
 
 export default User;

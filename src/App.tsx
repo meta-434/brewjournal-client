@@ -10,35 +10,35 @@ import { Auth0Provider } from "@auth0/auth0-react";
 import "./App.css";
 
 function App() {
-  return (
-    <Auth0Provider
-      domain={process.env.REACT_APP_DEV_AUTH0_DOMAIN || ""}
-      clientId={process.env.REACT_APP_DEV_AUTH0_CLIENT_ID || ""}
-      redirectUri={window.location.origin}
-    >
-      <div className="App">
-        <Router>
-          <div>
-            {/* All this Navbar component does is provide links that the Routes component can match & serve */}
-            <Navbar />
-            {/* A <Routes> looks through its children <Route>s and
+    return (
+        <Auth0Provider
+            domain={process.env.REACT_APP_DEV_AUTH0_DOMAIN || ""}
+            clientId={process.env.REACT_APP_DEV_AUTH0_CLIENT_ID || ""}
+            redirectUri={window.location.origin}
+        >
+            <div className="App">
+                <Router>
+                    <div>
+                        {/* All this Navbar component does is provide links that the Routes component can match & serve */}
+                        <Navbar />
+                        {/* A <Routes> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
-            <Routes>
-              <Route path="/recipes" element={<Recipes />} />
+                        <Routes>
+                            <Route path="/recipes" element={<Recipes />} />
 
-              <Route path="/ratings" element={<Ratings />} />
+                            <Route path="/ratings" element={<Ratings />} />
 
-              <Route path="/login" element={<Login />} />
+                            <Route path="/login" element={<Login />} />
 
-              <Route path="/register" element={<Register />} />
+                            <Route path="/register" element={<Register />} />
 
-              <Route path="/" element={<Home />} />
-            </Routes>
-          </div>
-        </Router>
-      </div>
-    </Auth0Provider>
-  );
+                            <Route path="/" element={<Home />} />
+                        </Routes>
+                    </div>
+                </Router>
+            </div>
+        </Auth0Provider>
+    );
 }
 
 export default App;

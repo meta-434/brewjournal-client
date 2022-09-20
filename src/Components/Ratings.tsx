@@ -1,5 +1,5 @@
 function Ratings() {
-  return <div>Ratings!</div>;
+    return <div>Ratings!</div>;
 }
 
 export default Ratings;

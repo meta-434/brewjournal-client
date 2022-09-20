@@ -1,3 +1,3 @@
 export default function Ratings() {
-  return <div>Register!</div>;
+    return <div>Register!</div>;
 }

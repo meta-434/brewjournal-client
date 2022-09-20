@@ -12,28 +12,19 @@ const Auth0LogoutButton = () => {
 
   return (
     <button onClick={() => logout({ returnTo: window.location.origin })}>
-      Log Out
+      Log Out 👋
     </button>
   );
 };
 
 export default function Login() {
-  const [count, setCount] = useState(0);
-
-  // useEffect(() => {
-  //   const id = setInterval(() => {
-  //     setCount(count + 1);
-  //   }, 1000);
-  //   return () => clearInterval(id);
-  // });
+  const { isAuthenticated } = useAuth0();
 
   return (
     <div>
       <p>Login!</p>
-      <p>🗿{count}?</p>
-      <button onClick={() => setCount(count + 1)}>👍</button>
-      <button onClick={() => setCount(count - 1)}>👎</button>
-      <Auth0LoginButton />
+      <p>🗿?</p>({" "}
+      {isAuthenticated ? <Auth0LoginButton /> : <Auth0LogoutButton />})
     </div>
   );
 }
