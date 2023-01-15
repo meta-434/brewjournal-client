@@ -19,12 +19,12 @@ const Auth0LogoutButton = () => {
 
 export default function Login() {
   const { isAuthenticated } = useAuth0();
-
+  console.log(`You ${isAuthenticated ? "ARE " : "ARE NOT "}logged in!`);
   return (
     <div>
       <p>Login!</p>
       <p>🗿?</p>({" "}
-      {isAuthenticated ? <Auth0LoginButton /> : <Auth0LogoutButton />})
+      {isAuthenticated ? <Auth0LogoutButton /> : <Auth0LoginButton />})
     </div>
   );
 }
