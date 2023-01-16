@@ -8,12 +8,14 @@ import {
 } from '../Equipment/Equipment';
 import { IBrewer, IKettle, IGrinder } from '../Equipment/Equipment';
 import { useAuth0, User } from '@auth0/auth0-react';
-import { Container, Card } from 'react-bootstrap';
+import { Container, Card, Button, ListGroup } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 import gravity from '../../assets/gravity.svg';
 import pressure from '../../assets/pressure.svg';
 
 interface IRecipe {
+  id: number;
+  title: string;
   authorId: string;
   equipment: { grinder: IGrinder; brewer: IBrewer; kettle: IKettle };
   coffee: object;
@@ -71,7 +73,7 @@ const Recipes = () => {
       <p>This is a recipes placeholder...</p>
 
       {recipeHolder.map((recipe, index) => {
-        console.log('type', index, recipe.equipment.brewer.brewerMethod);
+        console.log('title', index, Object.keys(recipe));
         return (
           <Card style={{ width: '18rem' }} key={index}>
             <Card.Img
@@ -79,11 +81,10 @@ const Recipes = () => {
               src={imgApply(recipe.equipment.brewer.brewerMethod)}
             />
             <Card.Body>
-              <Card.Title>
-                <>
-                  {recipe.equipment.brewer.model} recipe by {recipe.authorId}
-                </>
-              </Card.Title>
+              <Card.Title>{recipe.title}</Card.Title>
+              <Card.Subtitle>
+                <>by {recipe.authorId}</>
+              </Card.Subtitle>
               {recipe.notes ? (
                 recipe.notes.map((note, idx) => (
                   <Card.Text key={idx}>{note}</Card.Text>
@@ -92,6 +93,29 @@ const Recipes = () => {
                 <Card.Text>Check it out below 👇</Card.Text>
               )}
             </Card.Body>
+            <ListGroup className="list-group-flush">
+              <ListGroup.Item>
+                <>
+                  Brewer: {recipe.equipment.brewer.manufacturerId}{' '}
+                  {recipe.equipment.brewer.model}
+                </>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <>
+                  Grinder: {recipe.equipment.grinder.manufacturerId}{' '}
+                  {recipe.equipment.grinder.model}
+                </>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <>
+                  Kettle: {recipe.equipment.kettle.manufacturerId}{' '}
+                  {recipe.equipment.kettle.model}
+                </>
+              </ListGroup.Item>
+            </ListGroup>
+            <Button href={`/all-recipes/${recipe.id}`}>
+              Read the Recipe! ☕️
+            </Button>
           </Card>
         );
       })}
@@ -102,6 +126,8 @@ const Recipes = () => {
 export default Recipes;
 
 const testRecipe: IRecipe = {
+  id: 0,
+  title: 'My V60 Recipe',
   authorId: 'auth0|62c335d06bc0f6e5a5062272',
   equipment: {
     grinder: myGrinder,
@@ -175,9 +201,11 @@ const testRecipe: IRecipe = {
         'gently shake the brewer like you did during the bloom phase to ensure an even bed during final drawdown.',
     },
   ],
-  notes: ['My daily v60 routine!'],
+  notes: ['Also by Hoffman... or adapted therefrom'],
 };
 const testRecipe2: IRecipe = {
+  id: 1,
+  title: "James Hoffman's V60 Recipe",
   authorId: '00000000',
   equipment: {
     grinder: myGrinder2,
@@ -235,7 +263,7 @@ const testRecipe2: IRecipe = {
       instruction: 'Press gently all the way, it takes about 30 seconds.',
     },
   ],
-  notes: ["James Hoffman's AeroPress recipe!"],
+  notes: ['test note!'],
 };
 const allRecipes = [testRecipe, testRecipe2];
 
