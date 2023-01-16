@@ -24,12 +24,12 @@ function App() {
             {/* A <Routes> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
             <Routes>
-              <Route path="/recipes" element={<Recipes />} />
+              <Route path="/my-recipes" element={<Recipes />} />
+              <Route path="/all-recipes" element={<Recipes />} />
 
               <Route path="/ratings" element={<Ratings />} />
 
               <Route path="/login" element={<Login />} />
-
               <Route path="/register" element={<Register />} />
 
               <Route path="/" element={<Home />} />

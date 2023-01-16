@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useAuth0 } from "@auth0/auth0-react";
+import React from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const Auth0LoginButton = () => {
   const { loginWithRedirect } = useAuth0();
@@ -19,11 +19,11 @@ const Auth0LogoutButton = () => {
 
 export default function Login() {
   const { isAuthenticated } = useAuth0();
-  console.log(`You ${isAuthenticated ? "ARE " : "ARE NOT "}logged in!`);
+  console.log(`You ${isAuthenticated ? 'ARE ' : 'ARE NOT '}logged in!`);
   return (
     <div>
       <p>Login!</p>
-      <p>🗿?</p>({" "}
+      <p>🗿?</p>({' '}
       {isAuthenticated ? <Auth0LogoutButton /> : <Auth0LoginButton />})
     </div>
   );

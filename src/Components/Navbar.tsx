@@ -10,7 +10,10 @@ function Navbar() {
             <a href={'/'}>home</a>
           </li>
           <li>
-            <a href={'/recipes'}>my recipes</a>
+            <a href={'/my-recipes'}>my recipes</a>
+          </li>
+          <li>
+            <a href={'/all-recipes'}>all recipes</a>
           </li>
           <li>
             <a href={'/ratings'}>ratings</a>

@@ -1,11 +1,11 @@
 import { useAuth0 } from '@auth0/auth0-react';
-import React, { FC } from 'react';
+import React from 'react';
 
 interface UserProps {
   variant?: string;
 }
 
-const User: FC<UserProps> = ({ variant }) => {
+const User = ({ variant }: UserProps) => {
   const { user, isAuthenticated, isLoading } = useAuth0();
 
   if (isLoading)
