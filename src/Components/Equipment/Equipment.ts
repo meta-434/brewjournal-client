@@ -12,6 +12,11 @@ enum brewMethods {
   infusion = 'infusion',
   gravity = 'gravity',
   pressure = 'pressure',
+  espressoMachine = 'espressoMachine',
+  aeropress = 'aeropress',
+  frenchPress = 'frenchPress',
+  syphon = 'syphon',
+  dripper = 'dripper',
 }
 
 interface IEquipment {
@@ -70,7 +75,6 @@ export const myKettle2: IKettle = {
   notes: undefined,
   pid: true,
 };
-
 export const myBrewer: IBrewer = {
   id: 2,
   type: equipmentTypes.brewer,
@@ -78,7 +82,7 @@ export const myBrewer: IBrewer = {
   model: 'V60',
   notes: ['clear size 02'],
   materials: ['plastic'],
-  brewerMethod: brewMethods.gravity,
+  brewerMethod: brewMethods.dripper,
 };
 export const myBrewer2 = {
   id: 5,
@@ -87,7 +91,7 @@ export const myBrewer2 = {
   model: 'AeroPress',
   notes: ['V2? opaque grey plastic, default filters, default cap'],
   materials: ['plastic'],
-  brewerMethod: brewMethods.pressure,
+  brewerMethod: brewMethods.aeropress,
 };
 
 const manufacturers: object[] = [

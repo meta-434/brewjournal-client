@@ -10,8 +10,9 @@ import { IBrewer, IKettle, IGrinder } from '../Equipment/Equipment';
 import { useAuth0, User } from '@auth0/auth0-react';
 import { Container, Card, Button, ListGroup } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
-import gravity from '../../assets/gravity.svg';
-import pressure from '../../assets/pressure.svg';
+import pressure from '../../assets/brewmethods/pressure.svg';
+import aeropress from '../../assets/brewmethods/aeropress.svg';
+import dripper from '../../assets/brewmethods/dripper.svg';
 
 interface IRecipe {
   id: number;
@@ -36,7 +37,8 @@ interface ISteps {
 
 const imgApply = (type?: string) => {
   if (type === 'pressure') return pressure;
-  if (type === 'gravity') return gravity;
+  if (type === 'aeropress') return aeropress;
+  if (type === 'dripper') return dripper;
 };
 
 const Recipes = () => {
@@ -44,7 +46,6 @@ const Recipes = () => {
   const [recipeHolder, updateRecipeHolder] = useState<IRecipe[]>([]);
 
   useEffect(() => {
-    console.log('this will retrieve the recipes list from the DB');
     if (isAuthenticated) {
       // retrieve recipe
       if (recipeHolder.length === 0) {
@@ -62,16 +63,24 @@ const Recipes = () => {
           console.error(e);
         }
       }
+    } else {
+      try {
+        // not logged in, get all recipes.
+        (async () => {
+          const data = await fetchRecipes(undefined);
+          updateRecipeHolder(data);
+        })();
+      } catch (e) {
+        console.error(e);
+      }
     }
-    console.log(
-      `are we authenticated? ${isAuthenticated}, as user ${user?.name}, with recipes ${recipeHolder}`
-    );
+    // console.log(
+    //   `are we authenticated? ${isAuthenticated}, as user ${user?.name}, with recipes ${recipeHolder}`
+    // );
   }, [isLoading, recipeHolder, user]);
 
   return (
-    <Container>
-      <p>This is a recipes placeholder...</p>
-
+    <Container className="d-flex p-2 justify-content-around">
       {recipeHolder.map((recipe, index) => {
         console.log('title', index, Object.keys(recipe));
         return (

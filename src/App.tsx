@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from './Components/Navbar';
+import Navigation from './Components/Navigation';
 import Home from './Components/Home';
 import Recipes from './Components/Recipes/Recipes';
 import Ratings from './Components/Ratings';
@@ -19,8 +19,8 @@ function App() {
       <div className="App">
         <Router>
           <div>
-            {/* All this Navbar component does is provide links that the Routes component can match & serve */}
-            <Navbar />
+            {/* All this Navigation component does is provide links that the Routes component can match & serve */}
+            <Navigation />
             {/* A <Routes> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
             <Routes>
