@@ -2,23 +2,12 @@
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
-orbs:
-  node: circleci/node@5.1.0
-
-  jobs:
-    example-job:
-      docker:
-        # replace with your preferred image
-        - image: cimg/base:stable
-      steps:
-        - node/install-packages:
-            cache-only-lockfile: true 
-            pkg-manager: yarn 
-            with-cache: true 
-            include-branch-in-cache-key: true 
-            check-cache: never 
-
-workflows:
-  example-workflow:
-    jobs:
-      - example-job
+jobs:
+  build:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+    steps:
+      - checkout
+      - run: yarn install
+      - run: yarn test
