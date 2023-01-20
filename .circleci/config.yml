@@ -25,5 +25,5 @@ jobs:
           command: yarn run test --ci --runInBand --reporters=jest-junit --coverage
           environment:
             JEST_JUNIT_OUTPUT_DIR: ./reports/
-              - store_test_results:
-                  path: ./reports/
+      - store_test_results:
+          path: ./reports/
