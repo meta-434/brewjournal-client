@@ -24,7 +24,7 @@ jobs:
           command: yarn add --dev jest-junit
       - run:
           name: Run tests with JUnit as reporter
-          command: yarn run test --ci --runInBand --reporters=jest-junit --coverage
+          command: yarn run test:ci
           environment:
             JEST_JUNIT_OUTPUT_DIR: ./reports/
       - store_test_results:
