@@ -49,6 +49,7 @@
         "@typescript-eslint/eslint-plugin": "^5.38.0",
         "@typescript-eslint/parser": "^5.38.0",
         "eslint": "^8.23.1",
+        "jest-junit": "^15.0.0",
         "prettier": "2.8.3",
         "react-test-renderer": "^18.2.0"
     }
