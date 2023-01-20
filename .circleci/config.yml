@@ -16,7 +16,9 @@ jobs:
             install-yarn: true
             node-version: 19.4.0
       - run: node --version
-      - run: yarn install
+      - run:
+          name: run "yarn install node-modules"
+          command: yarn install
       - run:
           name: Install JUnit coverage reporter
           command: yarn add --dev jest-junit
