@@ -13,14 +13,8 @@ jobs:
     steps:
       - checkout
       # install dependencies
-      - node/install:
-          install-yarn: true
-          node-version: 19.4.0
-      - run: node --version
-      - run:
-          name: install packages using node orb
-          command: install-packages
-            - pkg-manager: 'yarn'
+      - node/install-packages:
+          pkg-manager: yarn
       # run test suite
       - run:
           name: Run tests with JUnit as reporter
