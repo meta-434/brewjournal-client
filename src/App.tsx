@@ -1,5 +1,5 @@
 import React from 'react';
-import Navigation from './Components/Navigation';
+import Navigation from './Components/Navigation/Navigation';
 import Home from './Components/Home';
 import Recipes from './Components/Recipes/Recipes';
 import Ratings from './Components/Ratings';
@@ -11,33 +11,33 @@ import './App.css';
 
 function App() {
   return (
-    <Auth0Provider
-      domain={process.env.REACT_APP_DEV_AUTH0_DOMAIN || ''}
-      clientId={process.env.REACT_APP_DEV_AUTH0_CLIENT_ID || ''}
-      redirectUri={window.location.origin}
-    >
-      <div className="App">
-        <Router>
-          <div>
-            {/* All this Navigation component does is provide links that the Routes component can match & serve */}
-            <Navigation />
-            {/* A <Routes> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-            <Routes>
-              <Route path="/my-recipes" element={<Recipes />} />
-              <Route path="/all-recipes" element={<Recipes />} />
 
-              <Route path="/ratings" element={<Ratings />} />
+        <Auth0Provider
+            data-testid="auth0-wrapper"
+          domain={process.env.REACT_APP_DEV_AUTH0_DOMAIN || ''}
+          clientId={process.env.REACT_APP_DEV_AUTH0_CLIENT_ID || ''}
+          redirectUri={window.location.origin}
+        >
+            <Router data-testid="router">
+              <div>
+                {/* All this Navigation component does is provide links that the Routes component can match & serve */}
+                <Navigation />
+                {/* A <Routes> looks through its children <Route>s and
+                renders the first one that matches the current URL. */}
+                <Routes>
+                  <Route path="/my-recipes" element={<Recipes />} />
+                  <Route path="/all-recipes" element={<Recipes />} />
 
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
+                  <Route path="/ratings" element={<Ratings />} />
 
-              <Route path="/" element={<Home />} />
-            </Routes>
-          </div>
-        </Router>
-      </div>
-    </Auth0Provider>
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/register" element={<Register />} />
+
+                  <Route path="/" element={<Home />} />
+                </Routes>
+              </div>
+            </Router>
+        </Auth0Provider>
   );
 }
 
