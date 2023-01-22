@@ -12,16 +12,23 @@ jobs:
     resource_class: small
     steps:
       - checkout
+      # look for existing cache and restore if found
+      - restore_cache:
+          key: v1-deps-{{ checksum "package-lock.json" }}
+      # install dependencies
       - node/install:
-            install-yarn: true
-            node-version: 19.4.0
+          install-yarn: true
+          node-version: 19.4.0
       - run: node --version
       - run:
           name: run "yarn install node-modules"
           command: yarn install
-      - run:
-          name: Install JUnit coverage reporter
-          command: yarn add --dev jest-junit
+      # save any changes to the cache
+      - save_cache:
+          key: v1-deps-{{ checksum "package-lock.json" }}
+          paths:
+              - node_modules
+      # run test suite
       - run:
           name: Run tests with JUnit as reporter
           command: yarn run test:ci
