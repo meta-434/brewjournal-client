@@ -6,10 +6,11 @@ orbs:
   node: circleci/node@5.1.0
 
 jobs:
-  build:
+  build-and-test:
     docker:
       - image: cimg/base:stable
     resource_class: small
+    executor: node/default # use the default executor defined within the orb
     steps:
       - checkout
       # install dependencies
