@@ -29,7 +29,7 @@
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
-        "test:ci": "react-scripts test --ci --coverage --reporters=default --reporters=jest-junit",
+        "test:ci": "react-scripts test -- --ci --coverage",
         "eject": "react-scripts eject",
         "lint": "eslint . --fix"
     },

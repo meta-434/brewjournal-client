@@ -1,15 +1,20 @@
 export default {
   preset: 'ts-jest',
   testEnvironment: 'jsdom',
-  testMatch: [
-    '<rootDir>/**/__tests__/**/*/spec.ts',
-    '**/*.spec.js',
-    '**/*.test.ts',
-    '**/*.test.tsx',
-  ],
   testPathIgnorePatterns: ['/node_modules/'],
   coverageDirectory: './coverage',
-  reporters: ['default', 'jest-junit'],
+  collectCoverage: true,
+  collectCoverageFrom: ['**/src/**'],
+  reporters: [
+    'default',
+    [
+      'jest-junit',
+      {
+        outputDirectory: 'test_reports',
+        outputName: 'jest-junit.xml',
+      },
+    ],
+  ],
   setupFilesAfterEnv: ['<rootDir>/setupTests.ts'],
   transform: { '^.+\\.tsx?$': ['ts-jest'] },
   moduleNameMapper: {

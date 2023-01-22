@@ -26,6 +26,6 @@ jobs:
           name: Run tests with JUnit as reporter
           command: yarn run test:ci
           environment:
-            JEST_JUNIT_OUTPUT_DIR: ./reports/
+            JEST_JUNIT_OUTPUT_DIR: ./test_reports/
       - store_test_results:
-          path: ./reports/
+          path: ./test_reports/
