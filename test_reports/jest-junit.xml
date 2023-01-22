@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="4" failures="0" errors="0" time="9.081">
+  <testsuite name="AppRouter" errors="0" failures="0" skipped="0" timestamp="2023-01-22T22:03:23" time="3.192" tests="1">
+    <testcase classname="AppRouter should render components as per association with navbar links" name="AppRouter should render components as per association with navbar links" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="App" errors="0" failures="0" skipped="0" timestamp="2023-01-22T22:03:23" time="4.403" tests="2">
+    <testcase classname="App renders correctly initial component" name="App renders correctly initial component" time="0.03">
+    </testcase>
+    <testcase classname="App renders the navbar links correctly" name="App renders the navbar links correctly" time="0.007">
+    </testcase>
+  </testsuite>
+  <testsuite name="App" errors="0" failures="0" skipped="0" timestamp="2023-01-22T22:03:23" time="4.981" tests="1">
+    <testcase classname="App renders correctly initial component" name="App renders correctly initial component" time="0.017">
+    </testcase>
+  </testsuite>
+</testsuites>
